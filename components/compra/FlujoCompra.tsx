@@ -19,7 +19,6 @@ import {
   fechaLarga,
   horariosDisponibles,
   luhnValido,
-  marcaTarjeta,
   nuevoId,
   peso,
   proximosLunes,
@@ -27,6 +26,7 @@ import {
   type Pedido,
   type Producto,
 } from "@/lib/pedidos";
+import { crearMetodoPago } from "@/lib/pagos";
 
 const PASOS = ["Cotiza", "Agenda", "Paga", "Listo"] as const;
 const boton = "boton-bloque display px-6 py-4 text-center text-lg disabled:opacity-50 disabled:shadow-none";
@@ -91,35 +91,33 @@ export default function FlujoCompra({ producto }: { producto: Producto }) {
     setTocado(true);
     setErrorPago(null);
     if (hayErrores) return;
-    if (metodo === "tarjeta" && digitos !== TARJETAS_PRUEBA.aprobada.replace(/\s/g, "")) {
-      setErrorPago(
-        digitos === TARJETAS_PRUEBA.rechazada.replace(/\s/g, "")
-          ? "Tu banco rechazó el pago. Prueba con otra tarjeta o paga en OXXO."
-          : "Modo de prueba: solo se aceptan las tarjetas de prueba que aparecen abajo. No escribas una tarjeta real.",
-      );
-      return;
-    }
     setProcesando(true);
     await new Promise((r) => setTimeout(r, 1200)); // simula la respuesta de la pasarela
-    const nuevo: Pedido = {
-      id: nuevoId(),
-      producto,
-      concepto: esCurso ? "Curso UNAM / IPN" : `Asesoría en vivo × ${cantidad}`,
-      detalle: esCurso ? `Examen: ${examen}` : `Materia: ${materia}`,
-      cantidad: esCurso ? 1 : cantidad,
-      total: q.total,
-      descuento: q.descuento,
-      metodo,
-      tarjeta: metodo === "tarjeta" ? { marca: marcaTarjeta(digitos), ultimos4: digitos.slice(-4) } : undefined,
-      referenciaOxxo:
-        metodo === "oxxo" ? Array.from({ length: 14 }, () => Math.floor(Math.random() * 10)).join("").replace(/(\d{4})(?=\d)/g, "$1 ") : undefined,
-      pagador: t.titular.trim(),
-      creado: new Date().toISOString(),
-      estado: metodo === "tarjeta" ? "pagado" : "pendiente",
-      inicio: esCurso ? inicio : undefined,
-      sesiones: esCurso ? undefined : [...horarios].sort().map((fecha) => ({ fecha, estado: "agendada" as const })),
-      reembolsado: 0,
-    };
+
+    // Factory Method: el flujo pide el método de pago sin saber qué clase concreta recibe
+    const resultado = crearMetodoPago(metodo).procesar(
+      {
+        id: nuevoId(),
+        producto,
+        concepto: esCurso ? "Curso UNAM / IPN" : `Asesoría en vivo × ${cantidad}`,
+        detalle: esCurso ? `Examen: ${examen}` : `Materia: ${materia}`,
+        cantidad: esCurso ? 1 : cantidad,
+        total: q.total,
+        descuento: q.descuento,
+        pagador: t.titular.trim(),
+        creado: new Date().toISOString(),
+        inicio: esCurso ? inicio : undefined,
+        sesiones: esCurso ? undefined : [...horarios].sort().map((fecha) => ({ fecha, estado: "agendada" as const })),
+        reembolsado: 0,
+      },
+      { numeroTarjeta: digitos },
+    );
+    if (!resultado.ok) {
+      setProcesando(false);
+      setErrorPago(resultado.error);
+      return;
+    }
+    const nuevo = resultado.pedido;
     crear(nuevo);
     setPedido(nuevo);
     setProcesando(false);

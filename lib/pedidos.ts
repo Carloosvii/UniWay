@@ -24,12 +24,13 @@ import { DIAS_REEMBOLSO_CURSO, HORAS_CANCELACION_ASESORIA, PRECIOS } from "./pol
 export const peso = (n: number) =>
   n.toLocaleString("es-MX", { style: "currency", currency: "MXN", minimumFractionDigits: 2 });
 
-// Precios con IVA incluido: el desglose separa la base y el 16 %
+// Precios con IVA incluido: el desglose separa la base y el 16 %.
+// El precio y el descuento los decide la estrategia del producto (ver ESTRATEGIAS más abajo).
 export function cotizar(producto: Producto, cantidad = 1) {
-  const unitario = producto === "curso" ? PRECIOS.curso : PRECIOS.asesoria;
+  const estrategia = ESTRATEGIAS[producto];
+  const unitario = estrategia.precioUnitario;
   const bruto = unitario * cantidad;
-  const descuento =
-    producto === "asesoria" && cantidad >= PRECIOS.minParaDescuento ? Math.round(bruto * PRECIOS.descuentoPaquete) : 0;
+  const descuento = estrategia.descuento(bruto, cantidad);
   const total = bruto - descuento;
   const base = Math.round((total / 1.16) * 100) / 100;
   return { unitario, cantidad, bruto, descuento, total, base, iva: Math.round((total - base) * 100) / 100 };
@@ -171,23 +172,59 @@ export function usePedidos() {
   };
 }
 
-// ---------- Reglas de cancelación y reembolso
+// ---------- PATRÓN STRATEGY · reglas de cada producto
+//
+// Cada producto tiene su propia estrategia con la misma interfaz: cuánto cuesta, qué descuento aplica
+// y cuánto se reembolsa al cancelar. `cotizar` y `reembolsoPedido` no preguntan qué producto es:
+// solo piden su estrategia a ESTRATEGIAS y la usan. Un producto nuevo = una estrategia nueva.
+export interface Reembolso {
+  monto: number;
+  motivo: string;
+}
+
+export interface EstrategiaProducto {
+  precioUnitario: number;
+  descuento(bruto: number, cantidad: number): number;
+  reembolso(p: Pedido, ahora: Date): Reembolso;
+}
+
 // Curso: reembolso total dentro de los primeros 7 días desde la compra; después ya no.
-// Asesoría: cada sesión se reembolsa si se cancela con más de 24 h de anticipación.
-// Pago en OXXO pendiente: se cancela sin cargo (no hubo cobro).
-export function reembolsoPedido(p: Pedido, ahora = new Date()) {
-  if (p.estado === "pendiente") return { monto: 0, motivo: "Aún no pagas: se cancela sin ningún cargo." };
-  if (p.producto === "curso") {
+const estrategiaCurso: EstrategiaProducto = {
+  precioUnitario: PRECIOS.curso,
+  descuento: () => 0,
+  reembolso(p, ahora) {
     const dias = (ahora.getTime() - new Date(p.creado).getTime()) / 86400000;
     return dias <= DIAS_REEMBOLSO_CURSO
       ? { monto: p.total - p.reembolsado, motivo: `Estás dentro de los ${DIAS_REEMBOLSO_CURSO} días: te devolvemos el total.` }
       : { monto: 0, motivo: `Pasaron más de ${DIAS_REEMBOLSO_CURSO} días desde la compra: ya no aplica reembolso.` };
-  }
-  const reembolsables = (p.sesiones ?? []).filter((s) => s.estado === "agendada" && horasPara(s.fecha, ahora) > HORAS_CANCELACION_ASESORIA);
-  return {
-    monto: Math.round(reembolsables.length * precioPorSesion(p) * 100) / 100,
-    motivo: `Se reembolsan las sesiones con más de ${HORAS_CANCELACION_ASESORIA} h de anticipación.`,
-  };
+  },
+};
+
+// Asesoría: 10 % de descuento desde 5 sesiones; cada sesión se reembolsa si faltan más de 24 h.
+const estrategiaAsesoria: EstrategiaProducto = {
+  precioUnitario: PRECIOS.asesoria,
+  descuento: (bruto, cantidad) =>
+    cantidad >= PRECIOS.minParaDescuento ? Math.round(bruto * PRECIOS.descuentoPaquete) : 0,
+  reembolso(p, ahora) {
+    const reembolsables = (p.sesiones ?? []).filter(
+      (s) => s.estado === "agendada" && horasPara(s.fecha, ahora) > HORAS_CANCELACION_ASESORIA,
+    );
+    return {
+      monto: Math.round(reembolsables.length * precioPorSesion(p) * 100) / 100,
+      motivo: `Se reembolsan las sesiones con más de ${HORAS_CANCELACION_ASESORIA} h de anticipación.`,
+    };
+  },
+};
+
+export const ESTRATEGIAS: Record<Producto, EstrategiaProducto> = {
+  curso: estrategiaCurso,
+  asesoria: estrategiaAsesoria,
+};
+
+// Pago en OXXO pendiente: se cancela sin cargo (no hubo cobro). Si ya se pagó, decide la estrategia.
+export function reembolsoPedido(p: Pedido, ahora = new Date()): Reembolso {
+  if (p.estado === "pendiente") return { monto: 0, motivo: "Aún no pagas: se cancela sin ningún cargo." };
+  return ESTRATEGIAS[p.producto].reembolso(p, ahora);
 }
 
 export function reembolsoSesion(p: Pedido, fecha: string, ahora = new Date()) {

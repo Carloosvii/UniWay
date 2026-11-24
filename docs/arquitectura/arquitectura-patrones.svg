@@ -1,0 +1,340 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1240" viewBox="0 0 1800 1240" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#2e444f"/>
+    </marker>
+  </defs>
+  <rect width="1800" height="1240" fill="#ffffff"/>
+
+  <!-- Título (mismo estilo que los otros diagramas) -->
+  <text x="40" y="70" font-size="40" font-weight="800" fill="#2e444f" letter-spacing="-1">ARQUITECTURA Y PATRONES DE DISEÑO · UNIWAY</text>
+  <rect x="40" y="88" width="120" height="6" fill="#8acdee"/>
+  <text x="40" y="130" font-size="18" fill="#6e6e73">Capas del sistema y dónde se aplica cada uno de los 5 patrones de diseño</text>
+
+  <!-- Encabezados de capa -->
+  <g font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">
+    <rect x="30" y="160" width="226" height="54" fill="#2e444f"/>
+    <text x="143" y="193">CLIENTES</text>
+    <rect x="264" y="160" width="332" height="54" fill="#2e444f"/>
+    <text x="430" y="193">PRESENTACIÓN</text>
+    <rect x="604" y="160" width="482" height="54" fill="#2e444f"/>
+    <text x="845" y="185">APLICACIÓN</text>
+    <text x="845" y="205" font-size="13" font-weight="600" fill="#c9dbe4">lógica de negocio</text>
+    <rect x="1094" y="160" width="322" height="54" fill="#2e444f"/>
+    <text x="1255" y="193">INTEGRACIÓN</text>
+    <rect x="1424" y="160" width="346" height="54" fill="#2e444f"/>
+    <text x="1597" y="185">DATOS</text>
+    <text x="1597" y="205" font-size="13" font-weight="600" fill="#c9dbe4">e infraestructura</text>
+  </g>
+  <rect x="30" y="160" width="1740" height="740" fill="none" stroke="#2e444f" stroke-width="3"/>
+  <g stroke="#c9dbe4" stroke-width="2" stroke-dasharray="8 6">
+    <line x1="260" y1="214" x2="260" y2="900"/>
+    <line x1="600" y1="214" x2="600" y2="900"/>
+    <line x1="1090" y1="214" x2="1090" y2="900"/>
+    <line x1="1420" y1="214" x2="1420" y2="900"/>
+  </g>
+
+  <!-- ===== Clientes ===== -->
+  <g text-anchor="middle">
+    <rect x="50" y="250" width="190" height="90" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <text x="145" y="290" font-size="17" font-weight="800" fill="#2e444f">NAVEGADOR WEB</text>
+    <text x="145" y="316" font-size="14" fill="#6e6e73">computadora</text>
+
+    <rect x="50" y="365" width="190" height="90" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <text x="145" y="405" font-size="17" font-weight="800" fill="#2e444f">NAVEGADOR MÓVIL</text>
+    <text x="145" y="431" font-size="14" fill="#6e6e73">celular (desde 375 px)</text>
+
+    <rect x="50" y="480" width="190" height="160" fill="#e8f4fb" stroke="#466778" stroke-width="3"/>
+    <text x="145" y="516" font-size="17" font-weight="800" fill="#2e444f">USUARIOS</text>
+    <text x="145" y="548" font-size="15" fill="#1d1d1f">Estudiante</text>
+    <text x="145" y="570" font-size="13" fill="#466778">consulta y planea</text>
+    <text x="145" y="602" font-size="15" fill="#1d1d1f">Mamá, papá o tutor</text>
+    <text x="145" y="624" font-size="13" fill="#466778">compra y paga</text>
+  </g>
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <line x1="240" y1="295" x2="250" y2="295"/>
+    <line x1="240" y1="410" x2="250" y2="410"/>
+    <line x1="240" y1="560" x2="250" y2="560"/>
+    <line x1="250" y1="295" x2="250" y2="560"/>
+    <line x1="250" y1="430" x2="272" y2="430" marker-end="url(#f)"/>
+  </g>
+  <text x="145" y="684" font-size="14" fill="#466778" text-anchor="middle" font-weight="700">HTTPS</text>
+  <text x="145" y="706" font-size="13" fill="#6e6e73" text-anchor="middle">uniway-gold.vercel.app</text>
+
+  <!-- ===== Presentación ===== -->
+  <rect x="280" y="240" width="172" height="450" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="280" y="240" width="172" height="52" fill="#e8f4fb"/>
+  <text x="366" y="264" font-size="15" font-weight="800" fill="#2e444f" text-anchor="middle">INTERFAZ</text>
+  <text x="366" y="283" font-size="12.5" fill="#466778" text-anchor="middle">React + Tailwind CSS</text>
+  <g font-size="14" fill="#1d1d1f">
+    <text x="296" y="322">▪ Inicio</text>
+    <text x="296" y="352">▪ Mapa de escuelas</text>
+    <text x="296" y="382">▪ Ficha de plantel</text>
+    <text x="296" y="412">▪ Cursos</text>
+    <text x="296" y="442">▪ Becas</text>
+    <text x="296" y="472">▪ Simulador</text>
+    <text x="296" y="502">▪ Compra (4 pasos)</text>
+    <text x="296" y="532">▪ Mi perfil</text>
+    <text x="296" y="562">▪ Cuenta</text>
+    <text x="296" y="592">▪ Páginas legales</text>
+  </g>
+  <text x="366" y="660" font-size="12.5" fill="#6e6e73" text-anchor="middle">app/ · components/</text>
+
+  <rect x="466" y="345" width="120" height="170" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="466" y="345" width="120" height="40" fill="#e8f4fb"/>
+  <text x="526" y="371" font-size="14" font-weight="800" fill="#2e444f" text-anchor="middle">CONTROLADOR</text>
+  <g font-size="13" fill="#1d1d1f" text-anchor="middle">
+    <text x="526" y="410">Next.js 15</text>
+    <text x="526" y="430">App Router</text>
+    <text x="526" y="458" fill="#466778" font-size="12">rutas dinámicas</text>
+    <text x="526" y="476" fill="#466778" font-size="11.5">/plantel/[id]</text>
+    <text x="526" y="494" fill="#466778" font-size="11">/comprar/[producto]</text>
+  </g>
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <line x1="452" y1="430" x2="462" y2="430" marker-end="url(#f)"/>
+    <line x1="586" y1="430" x2="614" y2="430" marker-end="url(#f)"/>
+  </g>
+
+  <!-- ===== Aplicación ===== -->
+  <rect x="618" y="232" width="454" height="400" fill="#e8f4fb"/>
+  <text x="636" y="262" font-size="16" font-weight="800" fill="#2e444f">SERVICIO DE COMPRA (CHECKOUT)</text>
+
+  <!-- Factory Method -->
+  <rect x="636" y="276" width="418" height="104" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="636" y="276" width="62" height="104" fill="#2e444f"/>
+  <text x="667" y="336" font-size="21" font-weight="800" fill="#8acdee" text-anchor="middle">FM</text>
+  <text x="712" y="304" font-size="17" font-weight="800" fill="#2e444f">FACTORY METHOD</text>
+  <g font-size="13.5" fill="#1d1d1f">
+    <text x="712" y="327">Crea el pedido según el método de pago:</text>
+    <text x="712" y="347">tarjeta (pagado) u OXXO (pendiente)</text>
+    <text x="712" y="368" font-size="12.5" fill="#466778">lib/pagos.ts · crearMetodoPago()</text>
+  </g>
+
+  <!-- Strategy -->
+  <rect x="636" y="392" width="418" height="104" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="636" y="392" width="62" height="104" fill="#2e444f"/>
+  <text x="667" y="452" font-size="23" font-weight="800" fill="#8acdee" text-anchor="middle">S</text>
+  <text x="712" y="420" font-size="17" font-weight="800" fill="#2e444f">STRATEGY</text>
+  <g font-size="13.5" fill="#1d1d1f">
+    <text x="712" y="443">Elige la regla según el producto: reembolso</text>
+    <text x="712" y="463">de 7 días (curso) o 24 h (asesoría)</text>
+    <text x="712" y="484" font-size="12.5" fill="#466778">lib/pedidos.ts · ESTRATEGIAS[producto]</text>
+  </g>
+
+  <!-- Observer -->
+  <rect x="636" y="508" width="418" height="104" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="636" y="508" width="62" height="104" fill="#2e444f"/>
+  <text x="667" y="568" font-size="23" font-weight="800" fill="#8acdee" text-anchor="middle">O</text>
+  <text x="712" y="536" font-size="17" font-weight="800" fill="#2e444f">OBSERVER</text>
+  <g font-size="13.5" fill="#1d1d1f">
+    <text x="712" y="559">Avisa cambios de sesión, favoritas y pedidos;</text>
+    <text x="712" y="579">la barra y el perfil se actualizan solos</text>
+    <text x="712" y="600" font-size="12.5" fill="#466778">lib/sesion.ts · dispatchEvent / addEventListener</text>
+  </g>
+
+  <!-- Otros servicios -->
+  <rect x="618" y="664" width="454" height="220" fill="#f5f5f7"/>
+  <text x="636" y="692" font-size="16" font-weight="800" fill="#2e444f">OTROS SERVICIOS DE NEGOCIO</text>
+  <g font-size="13" fill="#1d1d1f" text-anchor="middle">
+    <rect x="634" y="704" width="134" height="80" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="701" y="734" font-weight="800" fill="#2e444f">Catálogo</text>
+    <text x="701" y="754">filtros y distancia</text>
+    <text x="701" y="772" fill="#6e6e73" font-size="12">(Haversine)</text>
+
+    <rect x="778" y="704" width="134" height="80" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="845" y="734" font-weight="800" fill="#2e444f">Mis opciones</text>
+    <text x="845" y="754">reglas por</text>
+    <text x="845" y="772" fill="#6e6e73" font-size="12">modalidad</text>
+
+    <rect x="922" y="704" width="134" height="80" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="989" y="734" font-weight="800" fill="#2e444f">Cuentas</text>
+    <text x="989" y="754">estudiante / tutor</text>
+    <text x="989" y="772" fill="#6e6e73" font-size="12">hash SHA-256</text>
+
+    <rect x="634" y="794" width="134" height="80" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="701" y="824" font-weight="800" fill="#2e444f">Cotización</text>
+    <text x="701" y="844">IVA y descuento</text>
+    <text x="701" y="862" fill="#6e6e73" font-size="12">de paquete</text>
+
+    <rect x="778" y="794" width="134" height="80" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="845" y="824" font-weight="800" fill="#2e444f">Agenda</text>
+    <text x="845" y="844">fecha propuesta</text>
+    <text x="845" y="862" fill="#6e6e73" font-size="12">y horarios</text>
+
+    <rect x="922" y="794" width="134" height="80" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="989" y="824" font-weight="800" fill="#2e444f">Becas y</text>
+    <text x="989" y="844">simulador</text>
+    <text x="989" y="862" fill="#6e6e73" font-size="12">resultados por área</text>
+  </g>
+  <line x1="845" y1="632" x2="845" y2="660" stroke="#2e444f" stroke-width="3" marker-end="url(#f)"/>
+
+  <!-- ===== Integración ===== -->
+  <!-- Adapter -->
+  <rect x="1106" y="240" width="150" height="250" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="1106" y="240" width="150" height="48" fill="#2e444f"/>
+  <text x="1181" y="272" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle"><tspan fill="#8acdee">A</tspan> · ADAPTER</text>
+  <g font-size="13.5" fill="#1d1d1f" text-anchor="middle">
+    <text x="1181" y="314">Traduce los datos</text>
+    <text x="1181" y="334">de los servicios</text>
+    <text x="1181" y="354">externos al formato</text>
+    <text x="1181" y="374">de UniWay</text>
+    <text x="1181" y="408" fill="#466778" font-size="12">generar.py (SEP)</text>
+    <text x="1181" y="428" fill="#466778" font-size="12">MapaLeaflet.tsx</text>
+    <text x="1181" y="448" fill="#466778" font-size="12">linkComoLlegar()</text>
+  </g>
+
+  <!-- Servicios externos -->
+  <rect x="1270" y="232" width="140" height="440" fill="#e8f4fb"/>
+  <text x="1340" y="258" font-size="13.5" font-weight="800" fill="#2e444f" text-anchor="middle">SERVICIOS EXTERNOS</text>
+  <g font-size="12.5" fill="#1d1d1f" text-anchor="middle">
+    <rect x="1282" y="270" width="116" height="84" fill="#ffffff" stroke="#466778" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="1340" y="298" font-weight="800" fill="#2e444f">Pasarela</text>
+    <text x="1340" y="316" font-weight="800" fill="#2e444f">de pago</text>
+    <text x="1340" y="338" fill="#466778">simulada</text>
+
+    <rect x="1282" y="364" width="116" height="84" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="1340" y="392" font-weight="800" fill="#2e444f">SEP · Mi</text>
+    <text x="1340" y="410" font-weight="800" fill="#2e444f">derecho, mi lugar</text>
+    <text x="1340" y="432" fill="#466778">553 planteles</text>
+
+    <rect x="1282" y="458" width="116" height="84" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="1340" y="490" font-weight="800" fill="#2e444f">OpenStreet</text>
+    <text x="1340" y="508" font-weight="800" fill="#2e444f">Map</text>
+    <text x="1340" y="528" fill="#466778">mapa base</text>
+
+    <rect x="1282" y="552" width="116" height="108" fill="#ffffff" stroke="#466778" stroke-width="2"/>
+    <text x="1340" y="580" font-weight="800" fill="#2e444f">Google Maps,</text>
+    <text x="1340" y="598" font-weight="800" fill="#2e444f">Imágenes</text>
+    <text x="1340" y="616" font-weight="800" fill="#2e444f">y TikTok</text>
+    <text x="1340" y="640" fill="#466778">enlaces</text>
+  </g>
+
+  <!-- Proxy -->
+  <rect x="1106" y="610" width="150" height="240" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="1106" y="610" width="150" height="48" fill="#2e444f"/>
+  <text x="1181" y="642" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle"><tspan fill="#8acdee">P</tspan> · PROXY</text>
+  <g font-size="13.5" fill="#1d1d1f" text-anchor="middle">
+    <text x="1181" y="682">Controla el acceso</text>
+    <text x="1181" y="702">a los datos: exige</text>
+    <text x="1181" y="722">sesión, cifra la</text>
+    <text x="1181" y="742">contraseña y no</text>
+    <text x="1181" y="762">guarda la tarjeta</text>
+    <text x="1181" y="798" fill="#466778" font-size="12">lib/sesion.ts</text>
+    <text x="1181" y="818" fill="#466778" font-size="12">lib/pedidos.ts</text>
+  </g>
+
+  <!-- Flechas aplicación → integración -->
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <line x1="1054" y1="328" x2="1102" y2="328" marker-end="url(#f)"/>
+    <line x1="1072" y1="770" x2="1102" y2="770" marker-end="url(#f)"/>
+    <line x1="1054" y1="560" x2="1080" y2="560"/>
+    <polyline points="1080,560 1080,710 1102,710" marker-end="url(#f)"/>
+    <line x1="1256" y1="312" x2="1278" y2="312" marker-end="url(#f)"/>
+    <line x1="1282" y1="406" x2="1260" y2="406" marker-end="url(#f)"/>
+    <line x1="1256" y1="470" x2="1278" y2="490" marker-end="url(#f)"/>
+    <line x1="1181" y1="490" x2="1181" y2="606" marker-end="url(#f)"/>
+  </g>
+
+  <!-- ===== Datos e infraestructura ===== -->
+  <rect x="1440" y="232" width="310" height="190" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="1440" y="232" width="310" height="52" fill="#e8f4fb"/>
+  <text x="1595" y="256" font-size="16" font-weight="800" fill="#2e444f" text-anchor="middle">DATOS ESTÁTICOS</text>
+  <text x="1595" y="275" font-size="12.5" fill="#466778" text-anchor="middle">módulos TypeScript en el código</text>
+  <g font-size="14" fill="#1d1d1f">
+    <text x="1460" y="312">▪ planteles.ts · 553 planteles</text>
+    <text x="1460" y="340">▪ becas.ts · cursos.ts</text>
+    <text x="1460" y="368">▪ politicas.ts · precios y plazos</text>
+    <text x="1460" y="396">▪ simulador.ts · 20 preguntas</text>
+  </g>
+
+  <rect x="1440" y="442" width="310" height="210" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <rect x="1440" y="442" width="310" height="52" fill="#e8f4fb"/>
+  <text x="1595" y="466" font-size="16" font-weight="800" fill="#2e444f" text-anchor="middle">ALMACENAMIENTO LOCAL</text>
+  <text x="1595" y="485" font-size="12.5" fill="#466778" text-anchor="middle">localStorage del navegador (demo)</text>
+  <g font-size="14" fill="#1d1d1f">
+    <text x="1460" y="522">▪ Cuentas (contraseña con hash)</text>
+    <text x="1460" y="550">▪ Sesión activa</text>
+    <text x="1460" y="578">▪ Favoritas y listas por modalidad</text>
+    <text x="1460" y="606">▪ Pedidos, sesiones y reembolsos</text>
+    <text x="1460" y="634" fill="#6e6e73">▪ Avisos (preferencias)</text>
+  </g>
+
+  <rect x="1440" y="672" width="310" height="212" fill="#2e444f"/>
+  <text x="1595" y="704" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">INFRAESTRUCTURA EN LA NUBE</text>
+  <g font-size="14" fill="#ffffff">
+    <text x="1460" y="738">▪ Vercel: servidor Next.js,</text>
+    <text x="1476" y="758" fill="#c9dbe4">CDN y HTTPS automático</text>
+    <text x="1460" y="788">▪ GitHub: repositorio del código</text>
+    <text x="1460" y="818">▪ Despliegue continuo:</text>
+    <text x="1476" y="838" fill="#c9dbe4">cada git push publica</text>
+    <text x="1460" y="868" font-weight="700" fill="#8acdee">uniway-gold.vercel.app</text>
+  </g>
+
+  <!-- Flechas integración → datos -->
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <polyline points="1256,700 1428,700 1428,550 1436,550" marker-end="url(#f)"/>
+    <polyline points="1398,406 1428,406 1428,330 1436,330" marker-end="url(#f)"/>
+  </g>
+  <text x="1340" y="692" font-size="13" fill="#466778" text-anchor="middle">lee y escribe</text>
+
+  <!-- ===== Leyenda ===== -->
+  <text x="40" y="950" font-size="22" font-weight="800" fill="#2e444f">LEYENDA: DÓNDE SE APLICA CADA PATRÓN</text>
+  <rect x="40" y="962" width="80" height="5" fill="#8acdee"/>
+
+  <g font-size="13.5" fill="#1d1d1f">
+    <!-- FM -->
+    <rect x="40" y="985" width="330" height="230" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <rect x="40" y="985" width="330" height="44" fill="#2e444f"/>
+    <text x="56" y="1014" font-size="17" font-weight="800" fill="#ffffff"><tspan fill="#8acdee">FM</tspan> · FACTORY METHOD</text>
+    <text x="56" y="1054" font-weight="700" fill="#2e444f">Capa de aplicación</text>
+    <text x="56" y="1076" fill="#6e6e73">Crea objetos sin fijar de antemano su tipo.</text>
+    <text x="56" y="1108">Arma el pedido según el método de pago:</text>
+    <text x="56" y="1128">tarjeta → pagado, marca y últimos 4 dígitos</text>
+    <text x="56" y="1148">OXXO → pendiente, referencia de 14 dígitos</text>
+    <text x="56" y="1190" font-size="12.5" fill="#466778">lib/pagos.ts · MetodoPago, PagoTarjeta, PagoOxxo</text>
+
+    <!-- S -->
+    <rect x="386" y="985" width="330" height="230" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <rect x="386" y="985" width="330" height="44" fill="#2e444f"/>
+    <text x="402" y="1014" font-size="17" font-weight="800" fill="#ffffff"><tspan fill="#8acdee">S</tspan> · STRATEGY</text>
+    <text x="402" y="1054" font-weight="700" fill="#2e444f">Capa de aplicación</text>
+    <text x="402" y="1076" fill="#6e6e73">Cambia el algoritmo según el caso.</text>
+    <text x="402" y="1108">Regla de reembolso por producto: curso</text>
+    <text x="402" y="1128">(100 % en 7 días) o asesoría (24 h por sesión),</text>
+    <text x="402" y="1148">además del descuento de 10 % en paquetes</text>
+    <text x="402" y="1190" font-size="12.5" fill="#466778">lib/pedidos.ts · EstrategiaProducto</text>
+
+    <!-- O -->
+    <rect x="732" y="985" width="330" height="230" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <rect x="732" y="985" width="330" height="44" fill="#2e444f"/>
+    <text x="748" y="1014" font-size="17" font-weight="800" fill="#ffffff"><tspan fill="#8acdee">O</tspan> · OBSERVER</text>
+    <text x="748" y="1054" font-weight="700" fill="#2e444f">Capa de aplicación</text>
+    <text x="748" y="1076" fill="#6e6e73">Notifica a los suscriptores de un cambio.</text>
+    <text x="748" y="1108">Al iniciar sesión, guardar una favorita o</text>
+    <text x="748" y="1128">pagar, la barra y el perfil se actualizan solos,</text>
+    <text x="748" y="1148">incluso en otras pestañas abiertas</text>
+    <text x="748" y="1190" font-size="12.5" fill="#466778">useSesion · useOpciones · usePedidos</text>
+
+    <!-- A -->
+    <rect x="1078" y="985" width="330" height="230" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <rect x="1078" y="985" width="330" height="44" fill="#2e444f"/>
+    <text x="1094" y="1014" font-size="17" font-weight="800" fill="#ffffff"><tspan fill="#8acdee">A</tspan> · ADAPTER</text>
+    <text x="1094" y="1054" font-weight="700" fill="#2e444f">Capa de integración</text>
+    <text x="1094" y="1076" fill="#6e6e73">Traduce una interfaz a otra.</text>
+    <text x="1094" y="1108">Convierte los datos de la SEP al tipo Escuela,</text>
+    <text x="1094" y="1128">cada escuela a un marcador de Leaflet y la</text>
+    <text x="1094" y="1148">ubicación a una ruta de Google Maps</text>
+    <text x="1094" y="1190" font-size="12.5" fill="#466778">generar.py · MapaLeaflet.tsx</text>
+
+    <!-- P -->
+    <rect x="1424" y="985" width="330" height="230" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+    <rect x="1424" y="985" width="330" height="44" fill="#2e444f"/>
+    <text x="1440" y="1014" font-size="17" font-weight="800" fill="#ffffff"><tspan fill="#8acdee">P</tspan> · PROXY</text>
+    <text x="1440" y="1054" font-weight="700" fill="#2e444f">Capa de integración y datos</text>
+    <text x="1440" y="1076" fill="#6e6e73">Controla el acceso a un objeto.</text>
+    <text x="1440" y="1108">Nadie lee el almacenamiento directo:</text>
+    <text x="1440" y="1128">exige sesión, cifra la contraseña (SHA-256)</text>
+    <text x="1440" y="1148">y solo guarda los últimos 4 de la tarjeta</text>
+    <text x="1440" y="1190" font-size="12.5" fill="#466778">lib/sesion.ts · leer() / escribir()</text>
+  </g>
+</svg>
