@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#2e444f"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#ffffff"/>
+
+  <text x="40" y="70" font-size="40" font-weight="800" fill="#2e444f" letter-spacing="-1">ARQUITECTURA TÉCNICA · UNIWAY</text>
+  <rect x="40" y="88" width="120" height="6" fill="#8acdee"/>
+  <text x="40" y="130" font-size="18" fill="#6e6e73">Dónde corre cada parte, cómo se comunican y cómo se publica</text>
+
+  <!-- ===== Navegador ===== -->
+  <rect x="40" y="180" width="470" height="560" fill="#ffffff" stroke="#2e444f" stroke-width="4"/>
+  <rect x="40" y="180" width="470" height="56" fill="#2e444f"/>
+  <text x="62" y="217" font-size="22" font-weight="800" fill="#ffffff">NAVEGADOR DEL USUARIO</text>
+  <text x="62" y="268" font-size="15" fill="#6e6e73">Computadora o celular · Chrome, Edge, Safari</text>
+
+  <rect x="62" y="290" width="426" height="236" fill="#e8f4fb"/>
+  <text x="80" y="322" font-size="18" font-weight="800" fill="#2e444f">Componentes React (cliente)</text>
+  <g font-size="16" fill="#1d1d1f">
+    <text x="80" y="356">▪ Mapa interactivo (Leaflet)</text>
+    <text x="80" y="384">▪ Filtros, buscador y favoritas</text>
+    <text x="80" y="412">▪ Simulador de examen</text>
+    <text x="80" y="440">▪ Flujo de compra: cotiza → agenda → paga</text>
+    <text x="80" y="468">▪ Mi perfil: opciones, cursos y avisos</text>
+    <text x="80" y="496">▪ Validación de tarjeta (Luhn) y reglas</text>
+  </g>
+
+  <rect x="62" y="546" width="426" height="172" fill="#f5f5f7" stroke="#466778" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="80" y="578" font-size="18" font-weight="800" fill="#2e444f">Almacenamiento local (localStorage)</text>
+  <g font-size="16" fill="#1d1d1f">
+    <text x="80" y="610">▪ Cuentas (contraseña con hash SHA-256)</text>
+    <text x="80" y="638">▪ Sesión, favoritas y listas por modalidad</text>
+    <text x="80" y="666">▪ Pedidos, sesiones y reembolsos</text>
+    <text x="80" y="694" fill="#6e6e73">Demo: en producción iría en una base de datos</text>
+  </g>
+
+  <!-- ===== Vercel ===== -->
+  <rect x="620" y="180" width="470" height="560" fill="#ffffff" stroke="#2e444f" stroke-width="4"/>
+  <rect x="620" y="180" width="470" height="56" fill="#2e444f"/>
+  <text x="642" y="217" font-size="22" font-weight="800" fill="#ffffff">VERCEL (NUBE)</text>
+  <text x="642" y="268" font-size="15" fill="#6e6e73">CDN global · HTTPS automático · plan Hobby</text>
+
+  <rect x="642" y="290" width="426" height="236" fill="#e8f4fb"/>
+  <text x="660" y="322" font-size="18" font-weight="800" fill="#2e444f">Next.js 15 · App Router · TypeScript</text>
+  <g font-size="16" fill="#1d1d1f">
+    <text x="660" y="356">▪ Páginas generadas en el servidor (SSG)</text>
+    <text x="660" y="384">▪ Inicio, escuelas, cursos, becas, legales</text>
+    <text x="660" y="412">▪ /escuelas/plantel/[id]: 553 fichas</text>
+    <text x="660" y="440">▪ /comprar/[producto]: curso y asesoría</text>
+    <text x="660" y="468">▪ Optimización de imágenes (next/image)</text>
+    <text x="660" y="496">▪ Estilos con Tailwind CSS 4</text>
+  </g>
+
+  <rect x="642" y="546" width="426" height="172" fill="#f5f5f7"/>
+  <text x="660" y="578" font-size="18" font-weight="800" fill="#2e444f">Datos estáticos (módulos TypeScript)</text>
+  <g font-size="16" fill="#1d1d1f">
+    <text x="660" y="610">▪ planteles.ts · 553 planteles de la SEP</text>
+    <text x="660" y="638">▪ becas.ts · cursos.ts · simulador.ts</text>
+    <text x="660" y="666">▪ politicas.ts · precios, IVA y plazos</text>
+    <text x="660" y="694">▪ instituciones.ts · fichas UNAM, IPN…</text>
+  </g>
+
+  <!-- ===== Servicios externos ===== -->
+  <rect x="1200" y="180" width="360" height="160" fill="#e8f4fb" stroke="#466778" stroke-width="3"/>
+  <text x="1220" y="220" font-size="20" font-weight="800" fill="#2e444f">OPENSTREETMAP</text>
+  <text x="1220" y="250" font-size="16" fill="#1d1d1f">Mosaicos del mapa base</text>
+  <text x="1220" y="276" font-size="16" fill="#1d1d1f">y mapa insertado de cada plantel</text>
+  <text x="1220" y="310" font-size="14" fill="#6e6e73">tile.openstreetmap.org</text>
+
+  <rect x="1200" y="380" width="360" height="160" fill="#e8f4fb" stroke="#466778" stroke-width="3"/>
+  <text x="1220" y="420" font-size="20" font-weight="800" fill="#2e444f">SITIOS EXTERNOS</text>
+  <text x="1220" y="450" font-size="16" fill="#1d1d1f">Google Maps (rutas), Google</text>
+  <text x="1220" y="476" font-size="16" fill="#1d1d1f">Imágenes, TikTok, becas, academias</text>
+  <text x="1220" y="510" font-size="14" fill="#6e6e73">Se abren en una pestaña nueva</text>
+
+  <rect x="1200" y="580" width="360" height="160" fill="#ffffff" stroke="#466778" stroke-width="3" stroke-dasharray="10 7"/>
+  <text x="1220" y="620" font-size="20" font-weight="800" fill="#2e444f">PASARELA DE PAGO</text>
+  <text x="1220" y="650" font-size="16" fill="#1d1d1f">Simulada en el navegador con</text>
+  <text x="1220" y="676" font-size="16" fill="#1d1d1f">tarjetas de prueba y OXXO</text>
+  <text x="1220" y="710" font-size="14" fill="#6e6e73">Siguiente paso: Mercado Pago sandbox</text>
+
+  <!-- Flechas navegador ↔ Vercel -->
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <line x1="512" y1="390" x2="616" y2="390" marker-end="url(#f)"/>
+    <line x1="616" y1="430" x2="514" y2="430" marker-end="url(#f)"/>
+  </g>
+  <text x="565" y="378" font-size="14" fill="#1d1d1f" text-anchor="middle">HTTPS</text>
+  <text x="565" y="455" font-size="14" fill="#1d1d1f" text-anchor="middle">HTML, JS</text>
+  <text x="565" y="473" font-size="14" fill="#1d1d1f" text-anchor="middle">e imágenes</text>
+
+  <!-- Navegador → OSM y externos (pasan por arriba de Vercel) -->
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <polyline points="275,178 275,156 1380,156 1380,176" marker-end="url(#f)"/>
+  </g>
+  <text x="830" y="148" font-size="15" fill="#1d1d1f" text-anchor="middle">El navegador pide los mosaicos del mapa directo a OpenStreetMap</text>
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <polyline points="512,600 560,600 560,770 1140,770 1140,460 1196,460" marker-end="url(#f)"/>
+    <polyline points="1140,660 1196,660" marker-end="url(#f)"/>
+  </g>
+  <text x="760" y="762" font-size="15" fill="#1d1d1f" text-anchor="middle">Enlaces externos y pago simulado (desde el cliente)</text>
+
+  <!-- ===== Desarrollo y despliegue ===== -->
+  <rect x="40" y="830" width="1520" height="140" fill="#f5f5f7"/>
+  <text x="62" y="864" font-size="18" font-weight="800" fill="#2e444f">DESARROLLO Y DESPLIEGUE</text>
+
+  <rect x="62" y="882" width="250" height="70" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <text x="187" y="912" font-size="17" font-weight="800" fill="#2e444f" text-anchor="middle">Equipo</text>
+  <text x="187" y="936" font-size="14" fill="#6e6e73" text-anchor="middle">VS Code · Node.js · npm</text>
+
+  <rect x="420" y="882" width="300" height="70" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <text x="570" y="912" font-size="17" font-weight="800" fill="#2e444f" text-anchor="middle">GitHub</text>
+  <text x="570" y="936" font-size="14" fill="#6e6e73" text-anchor="middle">Carloosvii/UniWay · rama main</text>
+
+  <rect x="830" y="882" width="300" height="70" fill="#2e444f"/>
+  <text x="980" y="912" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">Vercel build</text>
+  <text x="980" y="936" font-size="14" fill="#c9dbe4" text-anchor="middle">next build → publicación</text>
+
+  <rect x="1240" y="882" width="300" height="70" fill="#ffffff" stroke="#2e444f" stroke-width="3"/>
+  <text x="1390" y="912" font-size="17" font-weight="800" fill="#2e444f" text-anchor="middle">Script de datos (Python)</text>
+  <text x="1390" y="936" font-size="14" fill="#6e6e73" text-anchor="middle">SEP → generar.py → planteles.ts</text>
+
+  <g stroke="#2e444f" stroke-width="3" fill="none">
+    <line x1="314" y1="917" x2="416" y2="917" marker-end="url(#f)"/>
+    <line x1="722" y1="917" x2="826" y2="917" marker-end="url(#f)"/>
+    <line x1="1010" y1="880" x2="1010" y2="746" marker-end="url(#f)"/>
+  </g>
+  <text x="365" y="907" font-size="14" fill="#1d1d1f" text-anchor="middle">git push</text>
+  <text x="774" y="907" font-size="14" fill="#1d1d1f" text-anchor="middle">automático</text>
+  <text x="1022" y="812" font-size="14" fill="#1d1d1f">publica</text>
+  <g stroke="#2e444f" stroke-width="3" fill="none" stroke-dasharray="7 5">
+    <polyline points="1238,917 1190,917 1190,860 570,860 570,878" marker-end="url(#f)"/>
+  </g>
+  <text x="995" y="852" font-size="14" fill="#6e6e73" text-anchor="end">se versiona en el repositorio</text>
+</svg>
